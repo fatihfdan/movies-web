@@ -4,10 +4,10 @@ import MoviesContainer from "./components/MoviesContainer/MoviesContainer.jsx";
 
 function App() {
   return (
-    <>
+    <div className="App">
       <Header />
       <MoviesContainer />
-    </>
+    </div>
   );
 }
 

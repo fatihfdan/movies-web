@@ -1,40 +1,34 @@
 import "./header.css";
-import { Col, Row } from "antd";
+import { Menu } from "antd";
+import { Input } from "antd";
+import { SearchOutlined } from "@ant-design/icons";
 
 function Header() {
   return (
-    <Row
-      style={{
-        height: "112px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        color: "white",
-      }}
-    >
-      <Col xs={2} sm={4} md={6} lg={8} xl={8}>
-        Col
-      </Col>
-      <Col
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-        xs={20}
-        sm={16}
-        md={12}
-        lg={8}
-        xl={6}
+    <div className="header-container">
+      <Menu
+        mode="horizontal"
+        className="movies-menu"
+        defaultSelectedKeys={["home"]}
       >
-        <input
-          className="movies-search"
-          type="search"
-          placeholder="Search..."
-        />
-      </Col>
-      <Col xs={2} sm={4} md={6} lg={8} xl={8}></Col>
-    </Row>
+        <Menu.Item key="home" style={{ color: "white" }}>
+          Home
+        </Menu.Item>
+        <div className="search-container">
+          <Input
+            className="movies-search"
+            placeholder="Search Movies..."
+            suffix={<SearchOutlined style={{ fontSize: "20px" }} />}
+          />
+        </div>
+        <Menu.Item key="about1" style={{ color: "white" }}>
+          Movies
+        </Menu.Item>
+        <Menu.Item key="contact" style={{ color: "white" }}>
+          Series
+        </Menu.Item>
+      </Menu>
+    </div>
   );
 }
 

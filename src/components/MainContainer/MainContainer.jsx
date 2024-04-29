@@ -1,5 +1,5 @@
 import img from "../../assets/movie.png";
-import "./moviescontainer.css";
+import "./maincontainer.css";
 
 function MoviesContainer() {
   return (

@@ -4,7 +4,7 @@ import "./maincontainer.css";
 function MoviesContainer() {
   return (
     <div className="movies-container">
-      <img className="movies-container-img" src={img} alt="img" />
+      <img className="movies-container-img" src={img} alt="Movies İmg" />
     </div>
   );
 }

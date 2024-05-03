@@ -3,7 +3,7 @@ import { Card, Button } from "antd";
 const { Meta } = Card;
 
 function MovieCard() {
-  const API_KEY = "1e31e940b34b9de92c3a0afe8f933b38";
+  const API_KEY = import.meta.env.VITE_MOVIE_API_KEY;
   const API_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}`;
 
   const [movies, setMovies] = useState([]);

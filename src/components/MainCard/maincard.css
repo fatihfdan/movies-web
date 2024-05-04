@@ -5,7 +5,21 @@
   width: 100%;
   height: 744px;
 }
-.button-adventure {
+
+.details-container {
+  position: absolute;
+  top: 452px;
+  left: 524px;
+  transform: translateX(-50%);
+}
+
+.movie-title {
+  color: white;
+  text-align: start;
+  margin-bottom: 10px;
+}
+
+.category-button {
   border-radius: 20px;
   margin-right: 5px;
   background-color: white;
@@ -16,13 +30,35 @@
   height: 44px;
 }
 
-.button-science {
-  border-radius: 20px;
-  margin-right: 5px;
-  background-color: white;
-  color: black;
+.calendar-icon {
+  font-size: 20px;
+  color: white;
+}
+.calendar-text {
+  color: white;
   font-size: 16px;
-  font-weight: 600;
-  line-height: 24px;
-  height: 44px;
+  font-weight: 500;
+}
+
+.history-icon {
+  font-size: 20px;
+  color: white;
+  margin-left: 10px;
+}
+.history-text {
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.star-icon {
+  font-size: 20px;
+  color: white;
+  margin-left: 10px;
+}
+
+.star-text {
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
 }

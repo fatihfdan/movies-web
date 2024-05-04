@@ -14,13 +14,7 @@ function Header() {
         <Menu.Item key="home" style={{ color: "white" }}>
           Home
         </Menu.Item>
-        <div className="search-container">
-          <Input
-            className="movies-search"
-            placeholder="Search Movies..."
-            suffix={<SearchOutlined style={{ fontSize: "20px" }} />}
-          />
-        </div>
+
         <Menu.Item key="about1" style={{ color: "white" }}>
           Movies
         </Menu.Item>
@@ -28,6 +22,13 @@ function Header() {
           Series
         </Menu.Item>
       </Menu>
+      <div className="search-container">
+        <Input
+          className="movies-search"
+          placeholder="Search Movies..."
+          suffix={<SearchOutlined style={{ fontSize: "20px" }} />}
+        />
+      </div>
     </div>
   );
 }

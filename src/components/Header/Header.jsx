@@ -3,25 +3,33 @@ import { Menu } from "antd";
 import { Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 
+const items = [
+  {
+    label: "Home",
+    key: "home",
+  },
+  {
+    label: "Movies",
+    key: "movies",
+  },
+  {
+    label: "Series",
+    key: "series",
+  },
+];
+
 function Header() {
   return (
     <div className="header-container">
       <Menu
-        mode="horizontal"
         className="movies-menu"
         defaultSelectedKeys={["home"]}
-      >
-        <Menu.Item key="home" style={{ color: "white" }}>
-          Home
-        </Menu.Item>
+        mode="horizontal"
+        items={items}
+        theme="dark"
+        selectedKeys={null}
+      />
 
-        <Menu.Item key="about1" style={{ color: "white" }}>
-          Movies
-        </Menu.Item>
-        <Menu.Item key="contact" style={{ color: "white" }}>
-          Series
-        </Menu.Item>
-      </Menu>
       <div className="search-container">
         <Input
           className="movies-search"

@@ -70,7 +70,7 @@ function MainCard() {
             <HistoryOutlined className="history-icon" />
             <p className="history-text">3:12:00</p>
             <StarFilled className="star-icon" />
-            <p className="star-text">8.5</p>
+            <p className="star-text">8.6</p>
           </Space>
         </div>
       </div>

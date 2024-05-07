@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { Card, Button } from "antd";
 const { Meta } = Card;
+import PropTypes from "prop-types";
 
-function MovieCard() {
+function MovieCard({ numberOfCards }) {
   const API_KEY = import.meta.env.VITE_API_KEY;
   const API_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}`;
+  console.log("API_KEY:", API_KEY);
 
   const [movies, setMovies] = useState([]);
 
@@ -32,9 +34,13 @@ function MovieCard() {
     return overview;
   };
 
+  MovieCard.propTypes = {
+    numberOfCards: PropTypes.number.isRequired,
+  };
+
   return (
     <div style={{ display: "flex", flexWrap: "wrap" }}>
-      {movies.map((movie) => (
+      {movies.slice(0, numberOfCards).map((movie) => (
         <Card
           key={movie.id}
           hoverable

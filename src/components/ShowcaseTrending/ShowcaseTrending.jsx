@@ -22,7 +22,7 @@ function ShowcaseTrending() {
       <Row
         style={{
           justifyContent: "end",
-          marginRight: "50px",
+          marginRight: "55px",
         }}
       >
         <h3

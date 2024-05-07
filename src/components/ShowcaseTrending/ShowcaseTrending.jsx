@@ -1,5 +1,6 @@
 import { Col, Row } from "antd";
 import MovieCard from "../MovieCard/MovieCard";
+import { ArrowRightOutlined } from "@ant-design/icons";
 
 function ShowcaseTrending() {
   return (
@@ -30,10 +31,14 @@ function ShowcaseTrending() {
             color: "white",
             marginLeft: "55px",
             cursor: "pointer",
-            textDecoration: "underline",
+            fontSize: "24px",
+            opacity: "0.5",
           }}
         >
-          Other Movies
+          View all
+          <ArrowRightOutlined
+            style={{ marginLeft: "10px", fontSize: "22px" }}
+          />
         </h3>
       </Row>
       <Row

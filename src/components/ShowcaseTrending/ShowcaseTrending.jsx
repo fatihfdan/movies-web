@@ -15,6 +15,7 @@ function ShowcaseTrending() {
             color: "white",
             marginBottom: "5px",
             marginLeft: "55px",
+            fontSize: "24px",
           }}
         >
           Trending

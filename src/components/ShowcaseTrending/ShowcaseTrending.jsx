@@ -8,6 +8,7 @@ function ShowcaseTrending() {
       <Row
         style={{
           alignItems: "start",
+          marginBottom: "-35px",
         }}
       >
         <h1

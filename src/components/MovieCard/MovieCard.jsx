@@ -1,29 +1,11 @@
-import { useEffect, useState } from "react";
 import { Card, Button } from "antd";
 const { Meta } = Card;
 import PropTypes from "prop-types";
+import { GlobalContext } from "../../Context/GlobalState";
+import { useContext } from "react";
 
 function MovieCard({ numberOfCards }) {
-  const API_KEY = import.meta.env.VITE_API_KEY;
-  const API_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}`;
-
-  const [movies, setMovies] = useState([]);
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const fetchData = () => {
-    fetch(`${API_URL}`)
-      .then((res) => res.json())
-      .then((data) => {
-        const filteredMovies = data.results.filter(
-          (movie) => movie.poster_path !== null
-        );
-        setMovies(filteredMovies);
-        console.log(filteredMovies);
-      });
-  };
+  const { movies } = useContext(GlobalContext);
 
   const renderOverview = (overview) => {
     const maxLength = 75;

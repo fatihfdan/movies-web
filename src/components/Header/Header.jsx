@@ -2,6 +2,8 @@ import "./header.css";
 import { Menu } from "antd";
 import { Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
+import { useContext, useState } from "react";
+import { GlobalContext } from "../../Context/GlobalState";
 
 const items = [
   {
@@ -19,6 +21,13 @@ const items = [
 ];
 
 function Header() {
+  const { setTerm } = useContext(GlobalContext);
+  const [searchValue, setSearchValue] = useState("");
+
+  const handleSearch = () => {
+    setTerm(searchValue);
+  };
+
   return (
     <div className="header-container">
       <Menu
@@ -33,8 +42,16 @@ function Header() {
       <div className="search-container">
         <Input
           className="movies-search"
+          value={searchValue}
+          onChange={(e) => setSearchValue(e.target.value)}
           placeholder="Search Movies..."
-          suffix={<SearchOutlined style={{ fontSize: "20px" }} />}
+          onPressEnter={handleSearch}
+          suffix={
+            <SearchOutlined
+              onClick={handleSearch}
+              style={{ fontSize: "20px" }}
+            />
+          }
         />
       </div>
     </div>

@@ -28,6 +28,7 @@ export const GlobalProvider = (props) => {
         );
         setMovies(filteredMovies);
         setLoading(false);
+        console.log(filteredMovies);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);

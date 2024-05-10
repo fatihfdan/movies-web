@@ -43,22 +43,9 @@ function ShowcaseTrending() {
           />
         </h3>
       </Row>
-      <Row
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Col
-          span={26}
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <MovieCard numberOfCards={7} />
+      <Row>
+        <Col span={26}>
+          <MovieCard />
         </Col>
       </Row>
     </div>

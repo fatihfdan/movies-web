@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import "../components/CartDetail.css";
 
 function CartDetail() {
+  const API_KEY = import.meta.env.VITE_API_KEY;
   const { id } = useParams();
   const [movie, setMovie] = useState();
   const [cartLoading, setCartLoading] = useState(false);
@@ -14,7 +14,7 @@ function CartDetail() {
   const fetchMovie = () => {
     setCartLoading(true);
     fetch(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=1e31e940b34b9de92c3a0afe8f933b38&append_to_response=videos&language=tr-TR`
+      `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&append_to_response=videos&language=tr-TR`
     )
       .then((res) => res.json())
       .then((data) => {

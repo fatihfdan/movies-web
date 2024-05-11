@@ -68,7 +68,7 @@ function MainCard() {
             <CalendarOutlined className="calendar-icon" />
             <p className="calendar-text">2022</p>
             <HistoryOutlined className="history-icon" />
-            <p className="history-text">3:12:00</p>
+            <p className="history-text">3:12</p>
             <StarFilled className="star-icon" />
             <p className="star-text">8.5</p>
           </Space>

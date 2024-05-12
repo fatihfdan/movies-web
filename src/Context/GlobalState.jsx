@@ -11,10 +11,15 @@ export const GlobalProvider = (props) => {
   const [movies, setMovies] = useState([]);
   const [term, setTerm] = useState("");
   const [loading, setLoading] = useState(false);
+  const [genres, setGenres] = useState({});
 
   useEffect(() => {
     fetchData();
   }, [term]);
+
+  useEffect(() => {
+    fetchGenresData();
+  }, []);
 
   const fetchData = () => {
     const query = term ? `&query=${term}` : "";
@@ -36,6 +41,20 @@ export const GlobalProvider = (props) => {
       });
   };
 
+  const fetchGenresData = () => {
+    fetch(
+      `https://api.themoviedb.org/3/genre/movie/list?language=tr&api_key=${API_KEY}`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        const genreMap = {};
+        data.genres.forEach((genre) => {
+          genreMap[genre.id] = genre.name;
+        });
+        setGenres(genreMap);
+      });
+  };
+
   return (
     <GlobalContext.Provider
       value={{
@@ -43,6 +62,7 @@ export const GlobalProvider = (props) => {
         fetchData,
         setTerm,
         loading,
+        genres,
       }}
     >
       {props.children}

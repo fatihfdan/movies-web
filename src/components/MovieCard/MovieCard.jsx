@@ -1,31 +1,15 @@
 /* eslint-disable react/prop-types */
-import { useState, useEffect } from "react";
 import { Card, Button } from "antd";
-
 import { useNavigate } from "react-router-dom";
+import { GlobalContext } from "../../Context/GlobalState";
+import { useContext } from "react";
 const { Meta } = Card;
 
 // eslint-disable-next-line react/prop-types
 function MovieCard({ poster_path, title, vote_average, id, genre_ids }) {
+  const { genres } = useContext(GlobalContext);
   const API_IMG = "https://image.tmdb.org/t/p/w500/";
-  const API_KEY = import.meta.env.VITE_API_KEY;
   const navigate = useNavigate();
-  const [genres, setGenres] = useState({});
-
-  useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/genre/movie/list?language=tr&api_key=${API_KEY}`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        const genreMap = {};
-        data.genres.forEach((genre) => {
-          genreMap[genre.id] = genre.name;
-        });
-        setGenres(genreMap);
-      })
-      .catch((error) => console.error("Error fetching genres:", error));
-  }, []);
 
   const handleClick = () => {
     navigate(`/${id}`);

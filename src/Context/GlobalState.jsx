@@ -60,6 +60,7 @@ export const GlobalProvider = (props) => {
       value={{
         movies,
         fetchData,
+        term,
         setTerm,
         loading,
         genres,

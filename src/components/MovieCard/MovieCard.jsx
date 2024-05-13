@@ -5,7 +5,6 @@ import { GlobalContext } from "../../Context/GlobalState";
 import { useContext } from "react";
 const { Meta } = Card;
 
-// eslint-disable-next-line react/prop-types
 function MovieCard({ poster_path, title, vote_average, id, genre_ids }) {
   const { genres } = useContext(GlobalContext);
   const API_IMG = "https://image.tmdb.org/t/p/w500/";
@@ -15,7 +14,8 @@ function MovieCard({ poster_path, title, vote_average, id, genre_ids }) {
     navigate(`/${id}`);
   };
   // eslint-disable-next-line react/prop-types
-  const roundedVoteAverage = vote_average.toFixed(1);
+  // const roundedVoteAverage = vote_average.toFixed(1);
+  console.log(poster_path, title, vote_average, id, genre_ids);
 
   return (
     <Card
@@ -27,7 +27,9 @@ function MovieCard({ poster_path, title, vote_average, id, genre_ids }) {
       onClick={handleClick}
     >
       <Meta title={title} />
-      <p style={{ marginTop: 10 }}>{`IMDb Puanı: ${roundedVoteAverage}`}</p>
+      <p style={{ marginTop: 10 }}>{`IMDb Puanı: ${
+        vote_average ? vote_average.toFixed(1) : "-"
+      }`}</p>
 
       <div style={{ marginTop: 30 }}>
         {genre_ids.map((genreId) => (

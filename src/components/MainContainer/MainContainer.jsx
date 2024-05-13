@@ -3,6 +3,7 @@ import { GlobalContext } from "../../Context/GlobalState";
 import MainCard from "../MainCard/MainCard";
 import Movies from "../Movies/Movies";
 import MoviesPagination from "../MoviesPagination/MoviesPagination";
+import ShowcaseTrending from "../ShowcaseTrending/ShowcaseTrending";
 
 function MainContainer() {
   const { term } = useContext(GlobalContext);
@@ -15,7 +16,10 @@ function MainContainer() {
           <MoviesPagination />
         </div>
       ) : (
-        <MainCard />
+        <div>
+          <MainCard />
+          <ShowcaseTrending />
+        </div>
       )}
     </div>
   );

@@ -1,8 +1,11 @@
 import { Col, Row } from "antd";
-import MovieCard from "../MovieCard/MovieCard";
+import MovieCard from "../MovieCard/MovieCard.jsx";
 import { ArrowRightOutlined } from "@ant-design/icons";
+import { useContext } from "react";
+import { GlobalContext } from "../../Context/GlobalState.jsx";
 
 function ShowcaseTrending() {
+  const { movies } = useContext(GlobalContext);
   return (
     <div>
       <Row
@@ -45,7 +48,9 @@ function ShowcaseTrending() {
       </Row>
       <Row>
         <Col span={26}>
-          <MovieCard />
+          {movies.map((movie) => (
+            <MovieCard key={movie.id} id={movie.id} {...movie} />
+          ))}
         </Col>
       </Row>
     </div>

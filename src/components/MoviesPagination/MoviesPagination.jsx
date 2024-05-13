@@ -5,7 +5,6 @@ function MoviesPagination() {
   return (
     <div>
       <Pagination
-        style={{ background: "white" }}
         className="movies-pagination"
         defaultCurrent={1}
         total={50}

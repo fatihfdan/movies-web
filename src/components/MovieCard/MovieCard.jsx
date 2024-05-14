@@ -13,14 +13,12 @@ function MovieCard({ poster_path, title, vote_average, id, genre_ids }) {
   const handleClick = () => {
     navigate(`/${id}`);
   };
-  // eslint-disable-next-line react/prop-types
-  // const roundedVoteAverage = vote_average.toFixed(1);
   console.log(poster_path, title, vote_average, id, genre_ids);
 
   return (
     <Card
       hoverable
-      style={{ width: 240, margin: 5, border: "5px solid white" }}
+      style={{ width: 240, height: 650, margin: 5, border: "5px solid white" }}
       cover={
         <img alt={title} src={API_IMG + poster_path} style={{ height: 400 }} />
       }

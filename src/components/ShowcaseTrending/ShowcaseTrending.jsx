@@ -6,6 +6,9 @@ import { GlobalContext } from "../../Context/GlobalState.jsx";
 
 function ShowcaseTrending() {
   const { movies } = useContext(GlobalContext);
+
+  const displayedMovies = movies.slice(0, 6);
+
   return (
     <div>
       <Row
@@ -46,12 +49,27 @@ function ShowcaseTrending() {
           />
         </h3>
       </Row>
-      <Row>
-        <Col span={26}>
-          {movies.map((movie) => (
-            <MovieCard key={movie.id} id={movie.id} {...movie} />
-          ))}
-        </Col>
+      <Row
+        justify="center"
+        gutter={[0, 24]}
+        style={{ marginTop: 15, padding: "0 150px" }}
+      >
+        {displayedMovies.map((movie) => (
+          <Col
+            key={movie.id}
+            xs={24}
+            sm={12}
+            md={8}
+            lg={4}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <MovieCard id={movie.id} {...movie} style={{ margin: "0" }} />
+          </Col>
+        ))}
       </Row>
     </div>
   );

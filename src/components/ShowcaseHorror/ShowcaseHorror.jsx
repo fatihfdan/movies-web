@@ -1,13 +1,15 @@
 import { Col, Row } from "antd";
 import { ArrowRightOutlined } from "@ant-design/icons";
-import MovieCard from "../components/MovieCard/MovieCard.jsx";
-import { GlobalContext } from "../Context/GlobalState.jsx";
+import MovieCard from "../MovieCard/MovieCard.jsx";
+import { GlobalContext } from "../../Context/GlobalState.jsx";
 import { useContext } from "react";
 
 function ShowcaseHorror() {
   const { movies } = useContext(GlobalContext);
 
-  const displayedMovies = movies.slice(0, 6);
+  const displayedMovies = movies
+    .filter((movie) => movie.genre_ids.includes(27))
+    .slice(0, 6);
 
   return (
     <div>

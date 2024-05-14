@@ -4,7 +4,7 @@ import MainCard from "../MainCard/MainCard";
 import Movies from "../Movies/Movies";
 import MoviesPagination from "../MoviesPagination/MoviesPagination";
 import ShowcaseTrending from "../ShowcaseTrending/ShowcaseTrending";
-import ShowcaseHorror from "../../ShowcaseHorror/ShowcaseHorror";
+import ShowcaseHorror from "../ShowcaseHorror/ShowcaseHorror";
 
 function MainContainer() {
   const { term } = useContext(GlobalContext);

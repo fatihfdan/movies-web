@@ -5,6 +5,7 @@ import Movies from "../Movies/Movies";
 import MoviesPagination from "../MoviesPagination/MoviesPagination";
 import ShowcaseTrending from "../ShowcaseTrending/ShowcaseTrending";
 import ShowcaseHorror from "../ShowcaseHorror/ShowcaseHorror";
+import ShowcaseWestern from "../ShowcaseWestern/ShowcaseWestern";
 
 function MainContainer() {
   const { term } = useContext(GlobalContext);
@@ -21,6 +22,7 @@ function MainContainer() {
           <MainCard />
           <ShowcaseTrending />
           <ShowcaseHorror />
+          <ShowcaseWestern />
         </div>
       )}
     </div>

@@ -1,15 +1,19 @@
+import { useState, useEffect } from "react";
 import { Col, Row } from "antd";
 import { ArrowRightOutlined } from "@ant-design/icons";
 import MovieCard from "../MovieCard/MovieCard.jsx";
-import { GlobalContext } from "../../Context/GlobalState.jsx";
-import { useContext } from "react";
 
 function ShowcaseHorror() {
-  const { movies } = useContext(GlobalContext);
+  const [movies, setMovies] = useState([]);
 
-  const displayedMovies = movies
-    .filter((movie) => movie.genre_ids.includes(27))
-    .slice(0, 6);
+  useEffect(() => {
+    const API_KEY = import.meta.env.VITE_API_KEY;
+    const API_HORROR_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=27&sort_by=popularity.desc`;
+
+    fetch(API_HORROR_URL)
+      .then((response) => response.json())
+      .then((data) => setMovies(data.results.slice(0, 6)));
+  }, []);
 
   return (
     <div>
@@ -57,7 +61,7 @@ function ShowcaseHorror() {
         gutter={[0, 24]}
         style={{ marginTop: 15, padding: "0 150px" }}
       >
-        {displayedMovies.map((movie) => (
+        {movies.map((movie) => (
           <Col
             key={movie.id}
             xs={24}

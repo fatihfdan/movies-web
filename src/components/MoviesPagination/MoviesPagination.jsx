@@ -1,16 +1,22 @@
 import { Pagination } from "antd";
 import "./moviespagination.css";
+import { useContext } from "react";
+import { GlobalContext } from "../../Context/GlobalState";
 
 function MoviesPagination() {
+  const { totalResults, currentPage, handlePageChange } =
+    useContext(GlobalContext);
+
   return (
     <div>
       <Pagination
         className="movies-pagination"
-        defaultCurrent={1}
-        total={50}
-        pageSizeOptions={[1, 10, 20, 30]}
+        current={currentPage}
+        total={totalResults}
+        pageSize={20}
+        onChange={handlePageChange}
+        showSizeChanger={false}
       />
-      ;
     </div>
   );
 }

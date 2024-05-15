@@ -32,7 +32,7 @@ function ShowcaseWestern() {
             fontSize: "24px",
           }}
         >
-          Western Movie
+          Western Movies
         </h1>
       </Row>
       <Row

@@ -50,7 +50,7 @@ function ShowcaseWestern() {
             opacity: "0.5",
           }}
         >
-          View all
+          View all.
           <ArrowRightOutlined
             style={{ marginLeft: "10px", fontSize: "22px" }}
           />

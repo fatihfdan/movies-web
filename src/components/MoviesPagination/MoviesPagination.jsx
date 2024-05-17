@@ -13,7 +13,7 @@ function MoviesPagination() {
         className="movies-pagination"
         current={currentPage}
         total={totalResults}
-        pageSize={20}
+        pageSize={40}
         onChange={handlePageChange}
         showSizeChanger={false}
       />

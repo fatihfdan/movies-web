@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import { GlobalContext } from "../../Context/GlobalState";
 import MainCard from "../MainCard/MainCard";
 import Movies from "../Movies/Movies";
@@ -9,6 +9,11 @@ import ShowcaseWestern from "../ShowcaseWestern/ShowcaseWestern";
 
 function MainContainer() {
   const { term } = useContext(GlobalContext);
+  const [viewAll, setViewAll] = useState(false);
+
+  const handleViewAllClick = () => {
+    setViewAll(true);
+  };
 
   return (
     <div>
@@ -17,10 +22,15 @@ function MainContainer() {
           <Movies />
           <MoviesPagination />
         </div>
+      ) : viewAll ? (
+        <div>
+          <Movies />
+          <MoviesPagination />
+        </div>
       ) : (
         <div>
           <MainCard />
-          <ShowcaseTrending />
+          <ShowcaseTrending onViewAllClick={handleViewAllClick} />
           <ShowcaseHorror />
           <ShowcaseWestern />
         </div>

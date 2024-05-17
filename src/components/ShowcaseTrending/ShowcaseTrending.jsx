@@ -3,8 +3,9 @@ import MovieCard from "../MovieCard/MovieCard.jsx";
 import { ArrowRightOutlined } from "@ant-design/icons";
 import { useContext } from "react";
 import { GlobalContext } from "../../Context/GlobalState.jsx";
+import PropTypes from "prop-types"; // Prop-types kütüphanesini import edin
 
-function ShowcaseTrending() {
+function ShowcaseTrending({ onViewAllClick }) {
   const { movies } = useContext(GlobalContext);
 
   const displayedMovies = movies.slice(0, 6);
@@ -42,6 +43,7 @@ function ShowcaseTrending() {
             fontSize: "24px",
             opacity: "0.5",
           }}
+          onClick={onViewAllClick}
         >
           View all
           <ArrowRightOutlined
@@ -74,5 +76,9 @@ function ShowcaseTrending() {
     </div>
   );
 }
+
+ShowcaseTrending.propTypes = {
+  onViewAllClick: PropTypes.func.isRequired,
+};
 
 export default ShowcaseTrending;

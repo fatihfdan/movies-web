@@ -1,12 +1,16 @@
 import { createContext, useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import { useSearchParams } from "react-router-dom";
 
 export const GlobalContext = createContext();
 
 export const GlobalProvider = (props) => {
   const API_KEY = import.meta.env.VITE_API_KEY;
+  const [searchParams] = useSearchParams();
+  const withGenresFilter = searchParams.get("with_genres");
   const API_URL = `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`;
   const API_SEARCH = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}`;
+  const API_GENRES_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=${withGenresFilter}&sort_by=popularity.desc`;
 
   const [movies, setMovies] = useState([]);
   const [term, setTerm] = useState("");
@@ -18,7 +22,7 @@ export const GlobalProvider = (props) => {
 
   useEffect(() => {
     fetchData(currentPage);
-  }, [term, currentPage]);
+  }, [term, currentPage, withGenresFilter]);
 
   useEffect(() => {
     fetchGenresData();
@@ -28,7 +32,11 @@ export const GlobalProvider = (props) => {
     const query = term ? `&query=${term}` : "";
     setLoading(true);
 
-    fetch(`${term ? API_SEARCH : API_URL}${query}&page=${page}`)
+    fetch(
+      `${
+        term ? API_SEARCH : withGenresFilter ? API_GENRES_URL : API_URL
+      }${query}&page=${page}`
+    )
       .then((res) => res.json())
       .then((data) => {
         const filteredMovies = data.results.filter(

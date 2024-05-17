@@ -2,9 +2,11 @@ import { ArrowRightOutlined } from "@ant-design/icons";
 import { Col, Row } from "antd";
 import { useEffect, useState } from "react";
 import MovieCard from "../MovieCard/MovieCard";
+import { useSearchParams } from "react-router-dom";
 
 function ShowcaseWestern() {
   const [movies, setMovies] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     const API_KEY = import.meta.env.VITE_API_KEY;
@@ -14,6 +16,11 @@ function ShowcaseWestern() {
       .then((response) => response.json())
       .then((data) => setMovies(data.results.slice(0, 6)));
   }, []);
+
+  const handleClick = () => {
+    searchParams.set("with_genres", "37");
+    setSearchParams(searchParams);
+  };
 
   return (
     <div>
@@ -40,6 +47,7 @@ function ShowcaseWestern() {
           justifyContent: "end",
           marginRight: "55px",
         }}
+        onClick={handleClick}
       >
         <h3
           style={{

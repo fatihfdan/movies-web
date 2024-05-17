@@ -6,10 +6,15 @@ import MoviesPagination from "../MoviesPagination/MoviesPagination";
 import ShowcaseTrending from "../ShowcaseTrending/ShowcaseTrending";
 import ShowcaseHorror from "../ShowcaseHorror/ShowcaseHorror";
 import ShowcaseWestern from "../ShowcaseWestern/ShowcaseWestern";
+import { useSearchParams } from "react-router-dom";
 
 function MainContainer() {
   const { term } = useContext(GlobalContext);
   const [viewAll, setViewAll] = useState(false);
+
+  const [searchParams] = useSearchParams();
+  const queryString = searchParams.get("with_genres");
+  console.log(searchParams.get("with_genres"));
 
   const handleViewAllClick = () => {
     setViewAll(true);
@@ -17,12 +22,7 @@ function MainContainer() {
 
   return (
     <div>
-      {term ? (
-        <div>
-          <Movies />
-          <MoviesPagination />
-        </div>
-      ) : viewAll ? (
+      {term || viewAll || queryString ? (
         <div>
           <Movies />
           <MoviesPagination />

@@ -4,6 +4,7 @@ import { Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import { useContext, useState } from "react";
 import { GlobalContext } from "../../Context/GlobalState";
+import { useNavigate } from "react-router-dom";
 
 const items = [
   {
@@ -23,9 +24,16 @@ const items = [
 function Header() {
   const { setTerm } = useContext(GlobalContext);
   const [searchValue, setSearchValue] = useState("");
+  const navigate = useNavigate();
 
   const handleSearch = () => {
     setTerm(searchValue);
+  };
+
+  const handleMenuClick = (e) => {
+    if (e.key === "home") {
+      navigate("/");
+    }
   };
 
   return (
@@ -37,6 +45,7 @@ function Header() {
         items={items}
         theme="dark"
         selectedKeys={null}
+        onClick={handleMenuClick}
       />
 
       <div className="search-container">

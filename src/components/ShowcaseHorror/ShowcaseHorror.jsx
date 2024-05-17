@@ -2,9 +2,11 @@ import { useState, useEffect } from "react";
 import { Col, Row } from "antd";
 import { ArrowRightOutlined } from "@ant-design/icons";
 import MovieCard from "../MovieCard/MovieCard.jsx";
+import { useSearchParams } from "react-router-dom";
 
 function ShowcaseHorror() {
   const [movies, setMovies] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     const API_KEY = import.meta.env.VITE_API_KEY;
@@ -14,6 +16,11 @@ function ShowcaseHorror() {
       .then((response) => response.json())
       .then((data) => setMovies(data.results.slice(0, 6)));
   }, []);
+
+  const handleClick = () => {
+    searchParams.set("with_genres", "27");
+    setSearchParams(searchParams);
+  };
 
   return (
     <div>
@@ -49,6 +56,7 @@ function ShowcaseHorror() {
             fontSize: "24px",
             opacity: "0.5",
           }}
+          onClick={handleClick}
         >
           View all
           <ArrowRightOutlined

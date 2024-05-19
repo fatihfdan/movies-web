@@ -26,7 +26,7 @@ function ShowcaseTrending({ onViewAllClick }) {
             fontSize: "24px",
           }}
         >
-          Trending
+          Trending...
         </h1>
       </Row>
       <Row

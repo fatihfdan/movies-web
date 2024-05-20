@@ -29,8 +29,8 @@ function CartDetail() {
 
   return (
     <div className="cartdetail">
-      <Row>
-        <Col span={2}>col-8</Col>
+      <Row style={{ width: "100%" }}>
+        <Col span={2}></Col>
         <Col span={20}>
           {cartLoading ? (
             <div className="loading-overlay">
@@ -52,25 +52,28 @@ function CartDetail() {
                   ) : (
                     <div className="video-placeholder">Video Bulunamadı</div>
                   )}
-                  <div className="content">
-                    <div className="image">
-                      <img
-                        src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                        alt="img"
-                        style={{ height: "500px", width: "100%" }}
-                      />
-                    </div>
-                    <div className="details">
-                      <h1>{movie.title}</h1>
-                      <p>{movie.overview}</p>
-                      <p className="release-date">
-                        Çıkış Tarihi: {movie.release_date}
-                      </p>
-                      <p className="rating">
-                        IMDb Puanı: {movie.vote_average.toFixed(1)}
-                      </p>
-                    </div>
-                  </div>
+                  <Row>
+                    <Col span={8}>
+                      <div className="image">
+                        <img
+                          src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                          alt="img"
+                        />
+                      </div>
+                    </Col>
+                    <Col span={16}>
+                      <div className="details">
+                        <h1>{movie.title}</h1>
+                        <p>{movie.overview}</p>
+                        <p className="release-date">
+                          Çıkış Tarihi: {movie.release_date}
+                        </p>
+                        <p className="rating">
+                          IMDb Puanı: {movie.vote_average.toFixed(1)}
+                        </p>
+                      </div>
+                    </Col>
+                  </Row>
                 </div>
               ) : (
                 <div>Film bilgilerine erişilemedi.</div>
@@ -78,7 +81,7 @@ function CartDetail() {
             </>
           )}
         </Col>
-        <Col span={2}>col-8</Col>
+        <Col span={2}></Col>
       </Row>
     </div>
   );

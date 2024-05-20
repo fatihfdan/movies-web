@@ -1,0 +1,71 @@
+.cartdetail {
+  position: relative;
+  min-height: 100vh;
+  background-color: #333;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.loading-overlay {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.moviecard {
+  width: 100%;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 10px;
+}
+
+.moviecard iframe,
+.video-placeholder {
+  width: 100%;
+  height: 500px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 24px;
+}
+
+.moviecard .content {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.moviecard .image {
+  flex: 1;
+  max-width: 500px;
+  margin-right: 20px;
+}
+
+.moviecard .details {
+  flex: 1;
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.release-date,
+.rating {
+  margin-top: 10px;
+}

@@ -14,7 +14,6 @@ function MainContainer() {
 
   const [searchParams] = useSearchParams();
   const queryString = searchParams.get("with_genres");
-  console.log(searchParams.get("with_genres"));
 
   const handleViewAllClick = () => {
     setViewAll(true);

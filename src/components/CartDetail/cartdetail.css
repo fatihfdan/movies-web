@@ -60,6 +60,7 @@
 .moviecard .details {
   flex: 1;
   max-width: 100%;
+  font-weight: 600;
 }
 
 .release-date,

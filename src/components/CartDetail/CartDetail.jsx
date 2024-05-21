@@ -28,6 +28,8 @@ function CartDetail() {
       });
   };
 
+  const releaseYear = movie ? new Date(movie.release_date).getFullYear() : null;
+
   return (
     <div className="cartdetail">
       <Row style={{ width: "100%" }}>
@@ -78,9 +80,7 @@ function CartDetail() {
                           </div>
                           <div className="calendar-info">
                             <CalendarOutlined className="calendar-icon" />
-                            <span className="calendar-text">
-                              {movie.release_date}
-                            </span>
+                            <span className="calendar-text">{releaseYear}</span>
                           </div>
                           <div className="star-info">
                             <StarFilled className="star-icon" />

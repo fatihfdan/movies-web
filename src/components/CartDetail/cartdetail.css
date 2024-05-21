@@ -67,3 +67,16 @@
 .rating {
   margin-top: 10px;
 }
+
+.cartdetail-button {
+  border-radius: 20px;
+  margin-right: 5px;
+  background-color: white;
+  color: black;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  height: 44px;
+  margin-bottom: 25px;
+  margin-top: 25px;
+}

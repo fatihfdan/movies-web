@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Spin } from "antd";
+import { Button, Spin } from "antd";
 import { Col, Row } from "antd";
 import "./cartdetail.css";
 
@@ -61,9 +61,19 @@ function CartDetail() {
                         />
                       </div>
                     </Col>
-                    <Col span={16}>
+                    <Col span={14} style={{ marginLeft: 25 }}>
                       <div className="details">
                         <h1>{movie.title}</h1>
+                        <div className="genres">
+                          {movie.genres.map((genre) => (
+                            <Button
+                              className="cartdetail-button"
+                              key={genre.id}
+                            >
+                              {genre.name}
+                            </Button>
+                          ))}
+                        </div>
                         <p>{movie.overview}</p>
                         <p className="release-date">
                           Çıkış Tarihi: {movie.release_date}

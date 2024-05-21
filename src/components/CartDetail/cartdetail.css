@@ -63,9 +63,10 @@
   font-weight: 600;
 }
 
-.release-date,
-.rating {
-  margin-top: 10px;
+.calendar-icon,
+.star-icon {
+  margin-right: 10px;
+  margin-top: 50px;
 }
 
 .cartdetail-button {
@@ -78,5 +79,5 @@
   line-height: 24px;
   height: 44px;
   margin-bottom: 25px;
-  margin-top: 25px;
+  margin-top: 75px;
 }

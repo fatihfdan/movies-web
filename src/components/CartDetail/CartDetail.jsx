@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Button, Spin } from "antd";
+import { Button, Space, Spin } from "antd";
 import { Col, Row } from "antd";
 import "./cartdetail.css";
+import { CalendarOutlined, StarFilled } from "@ant-design/icons";
 
 function CartDetail() {
   const API_KEY = import.meta.env.VITE_API_KEY;
@@ -64,23 +65,31 @@ function CartDetail() {
                     <Col span={14} style={{ marginLeft: 25 }}>
                       <div className="details">
                         <h1>{movie.title}</h1>
-                        <div className="genres">
-                          {movie.genres.map((genre) => (
-                            <Button
-                              className="cartdetail-button"
-                              key={genre.id}
-                            >
-                              {genre.name}
-                            </Button>
-                          ))}
-                        </div>
+                        <Space className="movie-info" size="middle">
+                          <div className="genres">
+                            {movie.genres.map((genre) => (
+                              <Button
+                                className="cartdetail-button"
+                                key={genre.id}
+                              >
+                                {genre.name}
+                              </Button>
+                            ))}
+                          </div>
+                          <div className="calendar-info">
+                            <CalendarOutlined className="calendar-icon" />
+                            <span className="calendar-text">
+                              {movie.release_date}
+                            </span>
+                          </div>
+                          <div className="star-info">
+                            <StarFilled className="star-icon" />
+                            <span className="star-text">
+                              {movie.vote_average.toFixed(1)}
+                            </span>
+                          </div>
+                        </Space>
                         <p>{movie.overview}</p>
-                        <p className="release-date">
-                          Çıkış Tarihi: {movie.release_date}
-                        </p>
-                        <p className="rating">
-                          IMDb Puanı: {movie.vote_average.toFixed(1)}
-                        </p>
                       </div>
                     </Col>
                   </Row>

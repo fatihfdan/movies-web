@@ -66,7 +66,7 @@ function CartDetail() {
                     </Col>
                     <Col span={14} style={{ marginLeft: 25 }}>
                       <div className="details">
-                        <h1>{movie.title}</h1>
+                        <h1 className="movie-title">{movie.title}</h1>
                         <Space className="movie-info" size="middle">
                           <div className="genres">
                             {movie.genres.map((genre) => (
@@ -79,7 +79,7 @@ function CartDetail() {
                             ))}
                           </div>
                           <div className="calendar-info">
-                            <CalendarOutlined className="calendar-icon" />
+                            <CalendarOutlined className="detail-calendar-icon" />
                             <span className="calendar-text">{releaseYear}</span>
                           </div>
                           <div className="star-info">

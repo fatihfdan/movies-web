@@ -1,9 +1,11 @@
 import "./header.css";
+import "../../App.css";
 import { Menu } from "antd";
 import { Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import { useContext, useState } from "react";
 import { GlobalContext } from "../../Context/GlobalState";
+import DarkMode from "../DarkMode/DarkMode";
 
 const items = [
   {
@@ -35,7 +37,6 @@ function Header() {
         defaultSelectedKeys={["home"]}
         mode="horizontal"
         items={items}
-        theme="dark"
         selectedKeys={null}
       />
 
@@ -53,6 +54,7 @@ function Header() {
             />
           }
         />
+        <DarkMode />
       </div>
     </div>
   );

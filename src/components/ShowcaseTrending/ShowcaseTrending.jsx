@@ -3,8 +3,7 @@ import MovieCard from "../MovieCard/MovieCard.jsx";
 import { ArrowRightOutlined } from "@ant-design/icons";
 import { useContext } from "react";
 import { GlobalContext } from "../../Context/GlobalState.jsx";
-import PropTypes from "prop-types"; // Prop-types kütüphanesini import edin
-
+import PropTypes from "prop-types";
 function ShowcaseTrending({ onViewAllClick }) {
   const { movies } = useContext(GlobalContext);
 

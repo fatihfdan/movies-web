@@ -61,7 +61,7 @@ function MainCard() {
         </div>
         <div className="details-container">
           <h1 className="movie-title">Avatar: The Way of Water</h1>
-          <Space>
+          <Space className="buttons-icons">
             <Button className="category-button">Action</Button>
             <Button className="category-button">Adventure</Button>
             <Button className="category-button">Science Fiction</Button>

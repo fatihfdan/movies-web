@@ -18,7 +18,13 @@ function MovieCard({ poster_path, title, vote_average, id, genre_ids }) {
   return (
     <Card
       hoverable
-      style={{ width: 240, height: 650, margin: 5, border: "5px solid white" }}
+      className="movie-card"
+      style={{
+        width: 240,
+        height: 650,
+        margin: 5,
+        border: "1px solid transparent ",
+      }}
       cover={
         <img alt={title} src={API_IMG + poster_path} style={{ height: 400 }} />
       }

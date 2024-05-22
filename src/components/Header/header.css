@@ -5,23 +5,27 @@
 }
 
 .movies-menu {
-  background-color: black;
   font-weight: 600;
   font-size: 16px;
   margin-top: 24px;
   margin-bottom: 40px;
   gap: 10px;
+  background: none;
 }
 
 .movies-menu .ant-menu-item {
-  border-bottom: 2px solid transparent;
+  color: white;
+}
+.movies-menu .ant-menu-item::after {
+  color: white;
 }
 
 .movies-menu .ant-menu-item:hover {
-  border-bottom-color: red;
+  color: white !important;
 }
-.movies-menu .ant-menu-item::selected {
-  border-bottom-color: red;
+.ant-menu-horizontal > .ant-menu-item::after {
+  border-bottom: none !important;
+  transition: none !important;
 }
 
 .search-container {

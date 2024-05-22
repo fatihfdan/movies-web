@@ -3,6 +3,7 @@ import { Card, Button } from "antd";
 import { useNavigate } from "react-router-dom";
 import { GlobalContext } from "../../Context/GlobalState";
 import { useContext } from "react";
+import "./moviecard.css";
 const { Meta } = Card;
 
 function MovieCard({ poster_path, title, vote_average, id, genre_ids }) {
@@ -19,12 +20,6 @@ function MovieCard({ poster_path, title, vote_average, id, genre_ids }) {
     <Card
       hoverable
       className="movie-card"
-      style={{
-        width: 240,
-        height: 650,
-        margin: 5,
-        border: "1px solid transparent ",
-      }}
       cover={
         <img alt={title} src={API_IMG + poster_path} style={{ height: 400 }} />
       }

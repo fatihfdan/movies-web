@@ -16,16 +16,16 @@
 .movies-menu .ant-menu-item {
   color: white;
 }
-.movies-menu .ant-menu-item::after {
-  color: white;
-}
 
 .movies-menu .ant-menu-item:hover {
   color: white !important;
 }
 .ant-menu-horizontal > .ant-menu-item::after {
-  border-bottom: none !important;
+  border-bottom: red !important;
   transition: none !important;
+}
+.ant-menu-horizontal {
+  border-bottom: none !important;
 }
 
 .search-container {

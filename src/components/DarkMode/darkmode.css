@@ -8,3 +8,24 @@ body.dark-theme {
   background-color: #000000;
   color: #ffffff;
 }
+body.light-theme .dark-mode-btn {
+  border: 2px solid black;
+}
+
+body.dark-theme .dark-mode-btn {
+  border: 2px solid white;
+}
+
+.dark-mode-btn {
+  height: 27px;
+  justify-content: center;
+  align-items: center;
+}
+
+.sunfilled {
+  font-size: 20px;
+}
+
+.moonoutlined {
+  font-size: 20px;
+}

@@ -18,7 +18,7 @@ function CartDetail() {
   const fetchMovie = () => {
     setCartLoading(true);
     fetch(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&append_to_response=videos&language=tr-TR`
+      `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&append_to_response=videos&language=en-EN`
     )
       .then((res) => res.json())
       .then((data) => {

@@ -25,7 +25,7 @@ function ShowcaseWestern() {
   };
 
   return (
-    <div>
+    <div className="western-movies">
       <Row
         className="showcase-western"
         style={{

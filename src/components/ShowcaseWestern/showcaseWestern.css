@@ -1,0 +1,34 @@
+/* showcaseWestern.css */
+body.light-theme .showcase-title,
+body.light-theme .showcase-view-all {
+  color: #000000;
+}
+
+body.dark-theme .showcase-title,
+body.dark-theme .showcase-view-all {
+  color: #ffffff;
+}
+
+.showcase-title {
+  margin-bottom: 5px;
+  margin-left: 55px;
+  font-size: 24px;
+}
+
+.showcase-view-all {
+  margin-left: 55px;
+  cursor: pointer;
+  font-size: 24px;
+  opacity: 0.5;
+}
+
+.showcase-content {
+  margin-top: 15px;
+  padding: 0 150px;
+}
+
+.movie-card-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

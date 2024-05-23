@@ -1,60 +1,28 @@
+// ShowcaseTrending.jsx
 import { Col, Row } from "antd";
 import MovieCard from "../MovieCard/MovieCard.jsx";
 import { ArrowRightOutlined } from "@ant-design/icons";
 import { useContext } from "react";
 import { GlobalContext } from "../../Context/GlobalState.jsx";
 import PropTypes from "prop-types";
+import "./showcasetrending.css";
+
 function ShowcaseTrending({ onViewAllClick }) {
   const { movies } = useContext(GlobalContext);
-
   const displayedMovies = movies.slice(0, 6);
 
   return (
     <div>
-      <Row
-        style={{
-          alignItems: "start",
-          marginBottom: "-35px",
-        }}
-      >
-        <h1
-          style={{
-            color: "white",
-            marginBottom: "5px",
-            marginLeft: "55px",
-            fontSize: "24px",
-          }}
-        >
-          Trending
-        </h1>
+      <Row className="showcase-row">
+        <h1 className="showcase-title">Trending</h1>
       </Row>
-      <Row
-        style={{
-          justifyContent: "end",
-          marginRight: "55px",
-        }}
-      >
-        <h3
-          style={{
-            color: "white",
-            marginLeft: "55px",
-            cursor: "pointer",
-            fontSize: "24px",
-            opacity: "0.5",
-          }}
-          onClick={onViewAllClick}
-        >
+      <Row className="showcase-row-end">
+        <h3 className="showcase-view-all" onClick={onViewAllClick}>
           View all
-          <ArrowRightOutlined
-            style={{ marginLeft: "10px", fontSize: "22px" }}
-          />
+          <ArrowRightOutlined className="showcase-icon" />
         </h3>
       </Row>
-      <Row
-        justify="center"
-        gutter={[0, 24]}
-        style={{ marginTop: 15, padding: "0 150px" }}
-      >
+      <Row justify="center" gutter={[0, 24]} className="showcase-content">
         {displayedMovies.map((movie) => (
           <Col
             key={movie.id}
@@ -62,13 +30,9 @@ function ShowcaseTrending({ onViewAllClick }) {
             sm={12}
             md={8}
             lg={4}
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
+            className="movie-card-col"
           >
-            <MovieCard id={movie.id} {...movie} style={{ margin: "0" }} />
+            <MovieCard id={movie.id} {...movie} />
           </Col>
         ))}
       </Row>

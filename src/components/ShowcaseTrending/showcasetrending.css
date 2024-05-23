@@ -1,0 +1,39 @@
+/* showcaseTrending.css */
+.showcase-row {
+  align-items: start;
+  margin-bottom: -35px;
+}
+
+.showcase-title {
+  margin-bottom: 5px;
+  margin-left: 55px;
+  font-size: 24px;
+}
+
+.showcase-row-end {
+  justify-content: end;
+  margin-right: 55px;
+}
+
+.showcase-view-all {
+  margin-left: 55px;
+  cursor: pointer;
+  font-size: 24px;
+  opacity: 0.5;
+}
+
+.showcase-icon {
+  margin-left: 10px;
+  font-size: 22px;
+}
+
+.showcase-content {
+  margin-top: 15px;
+  padding: 0 150px;
+}
+
+.movie-card-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

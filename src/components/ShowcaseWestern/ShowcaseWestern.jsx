@@ -1,8 +1,10 @@
+// ShowcaseWestern.jsx
 import { ArrowRightOutlined } from "@ant-design/icons";
 import { Col, Row } from "antd";
 import { useEffect, useState } from "react";
 import MovieCard from "../MovieCard/MovieCard";
 import { useSearchParams } from "react-router-dom";
+import "./showcaseWestern.css";
 
 function ShowcaseWestern() {
   const [movies, setMovies] = useState([]);
@@ -10,9 +12,9 @@ function ShowcaseWestern() {
 
   useEffect(() => {
     const API_KEY = import.meta.env.VITE_API_KEY;
-    const API_HORROR_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=37&sort_by=popularity.desc`;
+    const API_WESTERN_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=37&sort_by=popularity.desc`;
 
-    fetch(API_HORROR_URL)
+    fetch(API_WESTERN_URL)
       .then((response) => response.json())
       .then((data) => setMovies(data.results.slice(0, 6)));
   }, []);
@@ -25,6 +27,7 @@ function ShowcaseWestern() {
   return (
     <div>
       <Row
+        className="showcase-western"
         style={{
           alignItems: "start",
           marginBottom: "-35px",
@@ -33,7 +36,6 @@ function ShowcaseWestern() {
       >
         <h1
           style={{
-            color: "white",
             marginBottom: "5px",
             marginLeft: "55px",
             fontSize: "24px",
@@ -51,7 +53,6 @@ function ShowcaseWestern() {
       >
         <h3
           style={{
-            color: "white",
             marginLeft: "55px",
             cursor: "pointer",
             fontSize: "24px",

@@ -7,6 +7,7 @@ import { SearchOutlined } from "@ant-design/icons";
 import { useContext, useState } from "react";
 import { GlobalContext } from "../../Context/GlobalState";
 import DarkMode from "../DarkMode/DarkMode";
+import UserButton from "../UserButton/UserButton";
 
 const items = [
   {
@@ -56,6 +57,7 @@ function Header() {
           }
         />
         <DarkMode />
+        <UserButton />
       </div>
     </div>
   );

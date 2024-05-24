@@ -1,0 +1,20 @@
+.user-button {
+  margin-left: 50px;
+}
+
+.useroutlined {
+  font-size: 25px !important;
+}
+
+.user-icon-btn {
+  width: 35px !important;
+  height: 35px !important;
+}
+
+body.light-theme .user-icon-btn {
+  border: 2px solid black;
+}
+
+body.dark-theme .user-icon-btn {
+  border: 2px solid white;
+}

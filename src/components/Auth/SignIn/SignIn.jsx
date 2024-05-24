@@ -8,6 +8,7 @@ const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -20,6 +21,8 @@ const SignIn = () => {
       .then((userCredential) => {
         console.log(userCredential);
         setError(null);
+        setIsLoggedIn(true);
+        alert("You are logged in!");
         navigate("/");
       })
       .catch((error) => {
@@ -30,31 +33,32 @@ const SignIn = () => {
 
   return (
     <div className="sign-in-container">
-      <form onSubmit={signIn}>
-        <h1>Log In to your Account</h1>
-        {error && <p className="error-message">{error}</p>}
-        <input
-          type="email"
-          placeholder="Enter your email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Enter your password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit">Log In</button>
-      </form>
+      {isLoggedIn ? (
+        <p>You are logged in!</p>
+      ) : (
+        <form onSubmit={signIn}>
+          <h1>Log In to your Account</h1>
+          {error && <p className="error-message">{error}</p>}
+          <input
+            type="email"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Enter your password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button type="submit">Log In</button>
+        </form>
+      )}
       <p style={{ color: "black" }}>
-        Dont have an account?
-        <p
-          style={{ cursor: "pointer", color: "red", fontWeight: 600 }}
-          onClick={handleClick}
-        >
+        Don't have an account?{" "}
+        <div style={{ cursor: "pointer", color: "red" }} onClick={handleClick}>
           Sign Up
-        </p>
+        </div>
       </p>
     </div>
   );

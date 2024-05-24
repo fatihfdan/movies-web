@@ -8,6 +8,7 @@ export const GlobalProvider = (props) => {
   const API_KEY = import.meta.env.VITE_API_KEY;
   const [searchParams] = useSearchParams();
   const withGenresFilter = searchParams.get("with_genres");
+  const trending = searchParams.get("trending");
   const API_URL = `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`;
   const API_SEARCH = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}`;
   const API_GENRES_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=${withGenresFilter}&sort_by=popularity.desc`;
@@ -22,7 +23,7 @@ export const GlobalProvider = (props) => {
 
   useEffect(() => {
     fetchData(currentPage);
-  }, [term, currentPage, withGenresFilter]);
+  }, [term, currentPage, withGenresFilter, trending]);
 
   useEffect(() => {
     fetchGenresData();

@@ -1,32 +1,34 @@
-// ShowcaseHorror.jsx
-import { useState, useEffect } from "react";
+// ShowcaseTrending.jsx
 import { Col, Row } from "antd";
-import { ArrowRightOutlined } from "@ant-design/icons";
 import MovieCard from "../MovieCard/MovieCard.jsx";
+import { ArrowRightOutlined } from "@ant-design/icons";
+import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
-function ShowcaseHorror() {
-  const [movies, setMovies] = useState([]);
+import "./showcase.css";
+
+// eslint-disable-next-line react/prop-types
+function Showcase({ title, API_URL, searchParamKey, searchParamValue }) {
   const [searchParams, setSearchParams] = useSearchParams();
+  const [movies, setMovies] = useState([]);
+
+  const displayedMovies = movies.slice(0, 6);
 
   useEffect(() => {
-    const API_KEY = import.meta.env.VITE_API_KEY;
-    const API_HORROR_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=27&sort_by=popularity.desc`;
-
-    fetch(API_HORROR_URL)
+    fetch(API_URL)
       .then((response) => response.json())
       .then((data) => setMovies(data.results.slice(0, 6)));
   }, []);
 
   const handleClick = () => {
-    searchParams.set("with_genres", "27");
+    searchParams.set(searchParamKey, searchParamValue);
     setSearchParams(searchParams);
   };
 
   return (
     <div>
       <Row className="showcase-row">
-        <h1 className="showcase-title">Horror Movies</h1>
+        <h1 className="showcase-title">{title}</h1>
       </Row>
       <Row className="showcase-row-end">
         <h3 className="showcase-view-all" onClick={handleClick}>
@@ -35,7 +37,7 @@ function ShowcaseHorror() {
         </h3>
       </Row>
       <Row justify="center" gutter={[0, 24]} className="showcase-content">
-        {movies.map((movie) => (
+        {displayedMovies.map((movie) => (
           <Col
             key={movie.id}
             xs={24}
@@ -52,4 +54,4 @@ function ShowcaseHorror() {
   );
 }
 
-export default ShowcaseHorror;
+export default Showcase;

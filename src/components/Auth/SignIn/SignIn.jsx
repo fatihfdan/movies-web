@@ -32,34 +32,39 @@ const SignIn = () => {
   };
 
   return (
-    <div className="sign-in-container">
-      {isLoggedIn ? (
-        <p>You are logged in!</p>
-      ) : (
-        <form onSubmit={signIn}>
-          <h1>Log In to your Account</h1>
-          {error && <p className="error-message">{error}</p>}
-          <input
-            type="email"
-            placeholder="Enter your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            type="password"
-            placeholder="Enter your password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <button type="submit">Log In</button>
-        </form>
-      )}
-      <p style={{ color: "black" }}>
-        Don't have an account?{" "}
-        <div style={{ cursor: "pointer", color: "red" }} onClick={handleClick}>
-          Sign Up
-        </div>
-      </p>
+    <div className="sign-in">
+      <div className="sign-in-container">
+        {isLoggedIn ? (
+          <p>You are logged in!</p>
+        ) : (
+          <form onSubmit={signIn}>
+            <h1>Log In to your Account</h1>
+            {error && <p className="error-message">{error}</p>}
+            <input
+              type="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="Enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button type="submit">Log In</button>
+          </form>
+        )}
+        <p style={{ color: "black" }}>
+          Dont have an account?{" "}
+          <div
+            style={{ cursor: "pointer", color: "red" }}
+            onClick={handleClick}
+          >
+            Sign Up
+          </div>
+        </p>
+      </div>
     </div>
   );
 };

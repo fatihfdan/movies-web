@@ -31,6 +31,9 @@ const SignIn = () => {
       });
   };
 
+  const handleClickHome = () => {
+    navigate("/");
+  };
   return (
     <div className="sign-in">
       <div className="sign-in-container">
@@ -64,6 +67,7 @@ const SignIn = () => {
             Sign Up
           </div>
         </p>
+        <button onClick={handleClickHome}>Home</button>
       </div>
     </div>
   );

@@ -20,31 +20,17 @@ function MovieCard({ poster_path, title, vote_average, id, genre_ids }) {
     <Card
       hoverable
       className="movie-card"
-      cover={
-        <img alt={title} src={API_IMG + poster_path} style={{ height: 400 }} />
-      }
+      cover={<img alt={title} src={API_IMG + poster_path} />}
       onClick={handleClick}
     >
       <Meta title={title} />
-      <p style={{ marginTop: 10 }}>{`IMDb Puanı: ${
+      <p className="imdb-rating">{`IMDb Puanı: ${
         vote_average ? vote_average.toFixed(1) : "-"
       }`}</p>
 
       <div style={{ marginTop: 30 }}>
         {genre_ids.map((genreId) => (
-          <Button
-            style={{
-              width: "auto",
-              height: 30,
-              fontSize: 12,
-              marginRight: 5,
-              marginBottom: 5,
-              justifyContent: "center",
-              alignItems: "center",
-              background: "transparent",
-            }}
-            key={genreId}
-          >
+          <Button className="genre-button" key={genreId}>
             {genres[genreId]}
           </Button>
         ))}

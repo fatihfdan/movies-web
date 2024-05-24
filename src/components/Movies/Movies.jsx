@@ -1,28 +1,17 @@
 import { Flex } from "antd";
-import { GlobalContext } from "../../Context/GlobalState.jsx";
-import MovieCard from "../MovieCard/MovieCard.jsx";
+import { GlobalContext } from "../../Context/GlobalState";
+import MovieCard from "../MovieCard/MovieCard";
 import { useContext } from "react";
+import "./movies.css";
 
 function Movies() {
   const { movies } = useContext(GlobalContext);
   return (
-    <Flex
-      className="movies"
-      style={{
-        flexDirection: "column",
-        alignItems: "center",
-      }}
-    >
+    <Flex className="movies">
       {movies.length === 0 ? (
         <p className="notfound">Not Found...</p>
       ) : (
-        <Flex
-          wrap="wrap"
-          justify="center"
-          style={{
-            gap: "20px",
-          }}
-        >
+        <Flex className="movies-list">
           {movies.map((movie) => (
             <MovieCard key={movie.id} id={movie.id} {...movie} />
           ))}

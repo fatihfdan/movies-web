@@ -5,6 +5,7 @@ import Movies from "../Movies/Movies";
 import MoviesPagination from "../MoviesPagination/MoviesPagination";
 import { useSearchParams } from "react-router-dom";
 import Showcase from "../Showcase/Showcase";
+import MoviesContainer from "../MoviesContainer/MoviesContainer";
 
 function MainContainer() {
   const { term } = useContext(GlobalContext);
@@ -53,6 +54,7 @@ function MainContainer() {
               searchParamValue={showcase.searchParamValue}
             />
           ))}
+          <MoviesContainer />
         </div>
       )}
     </div>

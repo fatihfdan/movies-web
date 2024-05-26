@@ -1,0 +1,10 @@
+.filters-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.genres-button {
+  border-radius: 25px;
+  margin: 15px 15px 15px 0;
+}

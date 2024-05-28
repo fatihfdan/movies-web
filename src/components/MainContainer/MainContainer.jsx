@@ -14,6 +14,8 @@ function MainContainer() {
   const [searchParams] = useSearchParams();
   const queryString = searchParams.get("with_genres");
   const trending = searchParams.get("trending");
+  const view = searchParams.get("view");
+
   const showcaseList = [
     {
       title: "Trending",
@@ -37,24 +39,33 @@ function MainContainer() {
 
   return (
     <div>
-      {term || queryString || trending ? (
+      {view === "movies" && (
         <div>
-          <Movies />
-          <MoviesPagination />
-        </div>
-      ) : (
-        <div>
-          <MainCard />
-          {showcaseList.map((showcase) => (
-            <Showcase
-              key={showcase.title}
-              title={showcase.title}
-              API_URL={showcase.API_URL}
-              searchParamKey={showcase.searchParamKey}
-              searchParamValue={showcase.searchParamValue}
-            />
-          ))}
           <MoviesContainer />
+        </div>
+      )}
+
+      {!(view === "movies") && (
+        <div>
+          {term || queryString || trending || view ? (
+            <div>
+              <Movies />
+              <MoviesPagination />
+            </div>
+          ) : (
+            <div>
+              <MainCard />
+              {showcaseList.map((showcase) => (
+                <Showcase
+                  key={showcase.title}
+                  title={showcase.title}
+                  API_URL={showcase.API_URL}
+                  searchParamKey={showcase.searchParamKey}
+                  searchParamValue={showcase.searchParamValue}
+                />
+              ))}
+            </div>
+          )}
         </div>
       )}
     </div>

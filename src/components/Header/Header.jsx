@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // Header.jsx
 import "./header.css";
 import "../../App.css";
@@ -8,6 +9,7 @@ import { useContext, useState } from "react";
 import { GlobalContext } from "../../Context/GlobalState";
 import DarkMode from "../DarkMode/DarkMode";
 import UserButton from "../UserButton/UserButton";
+import { useSearchParams } from "react-router-dom";
 
 const items = [
   {
@@ -27,6 +29,15 @@ const items = [
 function Header() {
   const { setTerm } = useContext(GlobalContext);
   const [searchValue, setSearchValue] = useState("");
+  const [moviesParams, setMoviesParams] = useSearchParams();
+
+  const handleMenuClick = (e) => {
+    if (e.key === "movies") {
+      setMoviesParams({ view: "movies" });
+    } else {
+      setMoviesParams({});
+    }
+  };
 
   const handleSearch = () => {
     setTerm(searchValue);
@@ -40,6 +51,7 @@ function Header() {
         mode="horizontal"
         items={items}
         selectedKeys={null}
+        onClick={handleMenuClick}
       />
 
       <div className="search-container">

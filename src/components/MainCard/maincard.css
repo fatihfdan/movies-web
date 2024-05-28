@@ -1,3 +1,10 @@
+@media screen and (max-width: 767px) {
+  .maincard {
+    margin-bottom: 15px;
+    position: relative;
+  }
+}
+
 .maincard {
   margin-bottom: 25px;
   position: relative;

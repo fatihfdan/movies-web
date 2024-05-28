@@ -1,4 +1,10 @@
-/* showcaseTrending.css */
+@media screen and (max-width: 768px) {
+  .showcase-row {
+    align-items: start;
+    margin-bottom: -20px;
+  }
+}
+
 .showcase-row {
   align-items: start;
   margin-bottom: -35px;

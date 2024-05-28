@@ -1,25 +1,25 @@
-import { useContext } from "react";
+/* eslint-disable no-unused-vars */
+// MainContainer.jsx
+import { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../../Context/GlobalState";
 import MainCard from "../MainCard/MainCard";
-import Movies from "../Movies/Movies";
-import MoviesPagination from "../MoviesPagination/MoviesPagination";
 import { useSearchParams } from "react-router-dom";
 import Showcase from "../Showcase/Showcase";
 import MoviesContainer from "../MoviesContainer/MoviesContainer";
 
 function MainContainer() {
   const { term } = useContext(GlobalContext);
-  const API_KEY = import.meta.env.VITE_API_KEY;
-
   const [searchParams] = useSearchParams();
-  const queryString = searchParams.get("with_genres");
-  const trending = searchParams.get("trending");
+  const view = searchParams.get("view");
+  const API_KEY = import.meta.env.VITE_API_KEY;
+  const [trendingMovies, setTrendingMovies] = useState([]);
+
   const showcaseList = [
     {
       title: "Trending",
       API_URL: `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`,
-      searchParamKey: "trending",
-      searchParamValue: "true",
+      searchParamKey: "view",
+      searchParamValue: "trending",
     },
     {
       title: "Western",
@@ -35,28 +35,42 @@ function MainContainer() {
     },
   ];
 
+  useEffect(() => {
+    if (view === "trending") {
+      fetch(
+        `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`
+      )
+        .then((response) => response.json())
+        .then((data) => setTrendingMovies(data.results));
+    }
+  }, [view, API_KEY]);
+
+  if (view === "trending") {
+    return (
+      <div>
+        <h1>Trending Movies</h1>
+        <div className="movies-list">
+          {trendingMovies.map((movie) => (
+            <div key={movie.id}>{movie.title}</div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div>
-      {term || queryString || trending ? (
-        <div>
-          <Movies />
-          <MoviesPagination />
-        </div>
-      ) : (
-        <div>
-          <MainCard />
-          {showcaseList.map((showcase) => (
-            <Showcase
-              key={showcase.title}
-              title={showcase.title}
-              API_URL={showcase.API_URL}
-              searchParamKey={showcase.searchParamKey}
-              searchParamValue={showcase.searchParamValue}
-            />
-          ))}
-          <MoviesContainer />
-        </div>
-      )}
+      <MainCard />
+      {showcaseList.map((showcase) => (
+        <Showcase
+          key={showcase.title}
+          title={showcase.title}
+          API_URL={showcase.API_URL}
+          searchParamKey={showcase.searchParamKey}
+          searchParamValue={showcase.searchParamValue}
+        />
+      ))}
+      <MoviesContainer />
     </div>
   );
 }

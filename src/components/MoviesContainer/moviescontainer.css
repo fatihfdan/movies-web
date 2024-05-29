@@ -8,6 +8,10 @@
   border-radius: 25px;
   margin: 15px 15px 15px 0;
 }
+.genres-button.selected {
+  background-color: #1890ff;
+  color: white;
+}
 
 .movies-list {
   display: flex;

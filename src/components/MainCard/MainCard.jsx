@@ -15,7 +15,7 @@ function MainCard() {
       <div className="button-container">
         <Space>
           <Button type="primary" className="primary-button">
-            Watch Now...
+            Watch Now
           </Button>
           <Button type="primary" className="watch-later-btn">
             Watch Later

@@ -31,7 +31,7 @@ function MoviesContainer() {
               selectedGenre === genre.id ? "selected" : ""
             }`}
             key={genre.id}
-            onClick={() => handleGenreClick(genre.id)} // Tıklama işlevi ekle
+            onClick={() => handleGenreClick(genre.id)}
           >
             {genre.name}
           </Button>

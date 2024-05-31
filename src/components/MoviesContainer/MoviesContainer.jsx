@@ -7,7 +7,7 @@ import "./moviescontainer.css";
 
 function MoviesContainer() {
   const { genres, movies } = useContext(GlobalContext);
-  const [selectedGenre, setSelectedGenre] = useState(null);
+  const [selectedGenres, setSelectedGenres] = useState([]);
 
   const genreArray = Object.entries(genres).map(([id, name]) => ({
     id: parseInt(id),
@@ -15,11 +15,19 @@ function MoviesContainer() {
   }));
 
   const handleGenreClick = (genreId) => {
-    setSelectedGenre(genreId === selectedGenre ? null : genreId); // Seçilen kategoriyi güncelle
+    // Kategoriyi seçili kategoriler listesine ekle veya çıkar
+    if (selectedGenres.includes(genreId)) {
+      setSelectedGenres(selectedGenres.filter((id) => id !== genreId));
+    } else {
+      setSelectedGenres([...selectedGenres, genreId]);
+    }
   };
 
-  const filteredMovies = selectedGenre
-    ? movies.filter((movie) => movie.genre_ids.includes(selectedGenre))
+  // Seçilen kategorilere göre filtreleme yap
+  const filteredMovies = selectedGenres.length
+    ? movies.filter((movie) =>
+        selectedGenres.every((genreId) => movie.genre_ids.includes(genreId))
+      )
     : movies;
 
   return (
@@ -28,7 +36,7 @@ function MoviesContainer() {
         {genreArray.map((genre) => (
           <Button
             className={`genres-button ${
-              selectedGenre === genre.id ? "selected" : ""
+              selectedGenres.includes(genre.id) ? "selected" : ""
             }`}
             key={genre.id}
             onClick={() => handleGenreClick(genre.id)}

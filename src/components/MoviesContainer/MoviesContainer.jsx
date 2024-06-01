@@ -23,7 +23,6 @@ function MoviesContainer() {
     }
   };
 
-  // Seçilen kategorilere göre filtreleme yap
   const filteredMovies = selectedGenres.length
     ? movies.filter((movie) =>
         selectedGenres.every((genreId) => movie.genre_ids.includes(genreId))

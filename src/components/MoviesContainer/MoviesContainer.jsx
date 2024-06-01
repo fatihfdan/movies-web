@@ -15,7 +15,6 @@ function MoviesContainer() {
   }));
 
   const handleGenreClick = (genreId) => {
-    // Kategoriyi seçili kategoriler listesine ekle veya çıkar
     if (selectedGenres.includes(genreId)) {
       setSelectedGenres(selectedGenres.filter((id) => id !== genreId));
     } else {

@@ -1,5 +1,5 @@
 .main-container {
-  padding: 10px; /* Mobil cihazlar için daha az padding */
+  padding: 10px;
 }
 
 @media screen and (min-width: 768px) {

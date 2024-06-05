@@ -108,7 +108,7 @@ export const GlobalProvider = (props) => {
       updatedSelectedGenres = [...selectedGenres, genreId];
     }
     setSelectedGenres(updatedSelectedGenres);
-    setCurrentPage(1); // Sayfa 1'e geri dön
+    setCurrentPage(1);
     if (updatedSelectedGenres.length > 0) {
       fetchMoviesByGenre(updatedSelectedGenres, 1);
     } else {

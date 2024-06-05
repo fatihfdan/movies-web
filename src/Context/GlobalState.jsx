@@ -20,10 +20,15 @@ export const GlobalProvider = (props) => {
   const [totalResults, setTotalResults] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [selectedGenres, setSelectedGenres] = useState([]);
 
   useEffect(() => {
-    fetchData(currentPage);
-  }, [term, currentPage, withGenresFilter, trending]);
+    if (selectedGenres.length > 0) {
+      fetchMoviesByGenre(selectedGenres, currentPage);
+    } else {
+      fetchData(currentPage);
+    }
+  }, [term, currentPage, withGenresFilter, trending, selectedGenres]);
 
   useEffect(() => {
     fetchGenresData();
@@ -69,8 +74,46 @@ export const GlobalProvider = (props) => {
       });
   };
 
+  const fetchMoviesByGenre = (genreIds, page) => {
+    setLoading(true);
+    const genreQuery = genreIds.join(",");
+    fetch(
+      `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=${genreQuery}&sort_by=popularity.desc&page=${page}`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        const filteredMovies = data.results.filter(
+          (movie) => movie.poster_path !== null
+        );
+        setMovies(filteredMovies);
+        setTotalResults(data.total_results);
+        setTotalPages(data.total_pages);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching movies by genre:", error);
+        setLoading(false);
+      });
+  };
+
   const handlePageChange = (page) => {
     setCurrentPage(page);
+  };
+
+  const handleGenreClick = (genreId) => {
+    let updatedSelectedGenres = [];
+    if (selectedGenres.includes(genreId)) {
+      updatedSelectedGenres = selectedGenres.filter((id) => id !== genreId);
+    } else {
+      updatedSelectedGenres = [...selectedGenres, genreId];
+    }
+    setSelectedGenres(updatedSelectedGenres);
+    setCurrentPage(1); // Sayfa 1'e geri dön
+    if (updatedSelectedGenres.length > 0) {
+      fetchMoviesByGenre(updatedSelectedGenres, 1);
+    } else {
+      fetchData(1);
+    }
   };
 
   return (
@@ -78,6 +121,7 @@ export const GlobalProvider = (props) => {
       value={{
         movies,
         fetchData,
+        fetchMoviesByGenre,
         term,
         setTerm,
         loading,
@@ -86,6 +130,8 @@ export const GlobalProvider = (props) => {
         currentPage,
         handlePageChange,
         totalPages,
+        selectedGenres,
+        handleGenreClick,
       }}
     >
       {props.children}

@@ -1,32 +1,18 @@
 import { Button } from "antd";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { GlobalContext } from "../../Context/GlobalState";
 import MovieCard from "../MovieCard/MovieCard";
 import MoviesPagination from "../MoviesPagination/MoviesPagination";
 import "./moviescontainer.css";
 
 function MoviesContainer() {
-  const { genres, movies } = useContext(GlobalContext);
-  const [selectedGenres, setSelectedGenres] = useState([]);
+  const { genres, movies, handleGenreClick, selectedGenres } =
+    useContext(GlobalContext);
 
   const genreArray = Object.entries(genres).map(([id, name]) => ({
     id: parseInt(id),
     name,
   }));
-
-  const handleGenreClick = (genreId) => {
-    if (selectedGenres.includes(genreId)) {
-      setSelectedGenres(selectedGenres.filter((id) => id !== genreId));
-    } else {
-      setSelectedGenres([...selectedGenres, genreId]);
-    }
-  };
-
-  const filteredMovies = selectedGenres.length
-    ? movies.filter((movie) =>
-        selectedGenres.every((genreId) => movie.genre_ids.includes(genreId))
-      )
-    : movies;
 
   return (
     <div className="movies-container">
@@ -44,7 +30,7 @@ function MoviesContainer() {
         ))}
       </div>
       <div className="movies-list">
-        {filteredMovies.map((movie) => (
+        {movies.map((movie) => (
           <MovieCard key={movie.id} id={movie.id} {...movie} />
         ))}
       </div>

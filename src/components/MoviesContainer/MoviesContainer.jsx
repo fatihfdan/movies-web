@@ -1,13 +1,23 @@
 import { Button } from "antd";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { GlobalContext } from "../../Context/GlobalState";
 import MovieCard from "../MovieCard/MovieCard";
 import MoviesPagination from "../MoviesPagination/MoviesPagination";
 import "./moviescontainer.css";
 
 function MoviesContainer() {
-  const { genres, movies, handleGenreClick, selectedGenres } =
-    useContext(GlobalContext);
+  const {
+    genres,
+    movies,
+    handleGenreClick,
+    selectedGenres,
+    setSelectedGenres,
+  } = useContext(GlobalContext);
+
+  useEffect(() => {
+    // Bileşen her yüklendiğinde seçili kategorileri sıfırlayın
+    setSelectedGenres([]);
+  }, []);
 
   const genreArray = Object.entries(genres).map(([id, name]) => ({
     id: parseInt(id),

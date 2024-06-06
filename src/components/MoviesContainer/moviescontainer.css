@@ -3,8 +3,15 @@
   justify-content: center;
   align-items: center;
 }
+.filters-button span {
+  font-size: 15px;
+  font-weight: 600;
+}
 
 .genres-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 25px;
   margin: 15px 15px 15px 0;
 }
@@ -24,6 +31,13 @@
 
 .movies-container-pagination {
   margin-bottom: 15px;
+}
+
+.loading-spinner {
+  margin-top: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 body.light-theme .genres-button {

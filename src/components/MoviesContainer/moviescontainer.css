@@ -5,7 +5,7 @@
 }
 .filters-button span {
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .genres-button {
@@ -13,7 +13,7 @@
   justify-content: center;
   align-items: center;
   border-radius: 25px;
-  margin: 15px 15px 15px 0;
+  margin: 15px 10px 15px 0;
 }
 .genres-button.selected {
   background-color: #1890ff;

@@ -1,4 +1,4 @@
-import { Button } from "antd";
+import { Button, Spin } from "antd";
 import { useContext, useEffect } from "react";
 import { GlobalContext } from "../../Context/GlobalState";
 import MovieCard from "../MovieCard/MovieCard";
@@ -12,10 +12,10 @@ function MoviesContainer() {
     handleGenreClick,
     selectedGenres,
     setSelectedGenres,
+    loading,
   } = useContext(GlobalContext);
 
   useEffect(() => {
-    // Bileşen her yüklendiğinde seçili kategorileri sıfırlayın
     setSelectedGenres([]);
   }, []);
 
@@ -39,14 +39,22 @@ function MoviesContainer() {
           </Button>
         ))}
       </div>
-      <div className="movies-list">
-        {movies.map((movie) => (
-          <MovieCard key={movie.id} id={movie.id} {...movie} />
-        ))}
-      </div>
-      <div className="movies-container-pagination">
-        <MoviesPagination />
-      </div>
+      {loading ? (
+        <div className="loading-spinner">
+          <Spin size="large" />
+        </div>
+      ) : (
+        <>
+          <div className="movies-list">
+            {movies.map((movie) => (
+              <MovieCard key={movie.id} id={movie.id} {...movie} />
+            ))}
+          </div>
+          <div className="movies-container-pagination">
+            <MoviesPagination />
+          </div>
+        </>
+      )}
     </div>
   );
 }

@@ -20,10 +20,6 @@ const items = [
     label: "Movies",
     key: "movies",
   },
-  {
-    label: "Series",
-    key: "series",
-  },
 ];
 
 function Header() {

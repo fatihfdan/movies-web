@@ -4,12 +4,19 @@ import { Button, Space, Spin } from "antd";
 import { Col, Row } from "antd";
 import "./cartdetail.css";
 import { CalendarOutlined, StarFilled } from "@ant-design/icons";
+import CommentList from "../Comment/CommentList";
+import CommentForm from "../Comment/CommentForm";
 
 function CartDetail() {
   const API_KEY = import.meta.env.VITE_API_KEY;
   const { id } = useParams();
   const [movie, setMovie] = useState();
   const [cartLoading, setCartLoading] = useState(false);
+  const [comments, setComments] = useState([]);
+
+  const addComment = (comment) => {
+    setComments([...comments, comment]);
+  };
 
   useEffect(() => {
     fetchMovie();
@@ -80,7 +87,7 @@ function CartDetail() {
                         />
                       </div>
                     </Col>
-                    <Col span={14} style={{ marginLeft: 25 }}>
+                    <Col span={14} style={{ marginLeft: 25, marginTop: 15 }}>
                       <div className="details">
                         <h1 className="movie-title">{movie.title}</h1>
                         <Space className="movie-info" size="middle">
@@ -106,6 +113,17 @@ function CartDetail() {
                           </div>
                         </Space>
                         <p>{movie.overview}</p>
+                      </div>
+                    </Col>
+                    <Col span={24}>
+                      <div className="comment-section">
+                        <h2 className="comments-name">Yorumlar</h2>
+                        <div className="comment-list">
+                          <CommentList comments={comments} />
+                        </div>
+                        <div className="comment-form">
+                          <CommentForm addComment={addComment} />
+                        </div>
                       </div>
                     </Col>
                   </Row>

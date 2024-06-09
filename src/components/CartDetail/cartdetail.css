@@ -54,6 +54,7 @@
 .moviecard .image {
   flex: 1;
   width: 50%;
+  margin-top: 15px;
 }
 
 .moviecard .details {
@@ -87,4 +88,41 @@
   height: 44px;
   margin-bottom: 25px;
   margin-top: 30px;
+}
+.comments-name {
+  margin-bottom: 50px;
+}
+.comment-section {
+  margin-top: 20px;
+}
+
+.comment-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.comment-item {
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.comment-form textarea {
+  width: 1080px;
+  max-width: 900px;
+  height: 100px;
+  margin-bottom: 10px;
+  padding: 10px;
+  resize: none;
 }

@@ -17,7 +17,7 @@ const CommentForm = ({ addComment }) => {
       <textarea
         value={comment}
         onChange={(e) => setComment(e.target.value)}
-        placeholder="Yorumunuzu yazın..."
+        placeholder="Yorumunuzu yazın."
       ></textarea>
       <button type="submit">Yorum Yap</button>
     </form>

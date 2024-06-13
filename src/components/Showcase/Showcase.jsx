@@ -36,14 +36,15 @@ function Showcase({ title, API_URL, searchParamKey, searchParamValue }) {
           <ArrowRightOutlined className="showcase-icon" />
         </h3>
       </Row>
-      <Row justify="center" gutter={[0, 24]} className="showcase-content">
+      <Row className="showcase-content">
         {displayedMovies.map((movie) => (
           <Col
             key={movie.id}
             xs={24}
             sm={12}
             md={8}
-            lg={4}
+            lg={8}
+            xl={4}
             className="movie-card-col"
           >
             <MovieCard id={movie.id} {...movie} />

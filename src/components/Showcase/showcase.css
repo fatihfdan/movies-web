@@ -1,13 +1,6 @@
-@media screen and (max-width: 768px) {
-  .showcase-row {
-    align-items: start;
-    margin-bottom: -20px;
-  }
-}
-
 .showcase-row {
   align-items: start;
-  margin-bottom: -35px;
+  /* margin-bottom: -35px; */
 }
 
 .showcase-title {
@@ -35,11 +28,4 @@
 
 .showcase-content {
   margin-top: 15px;
-  padding: 0 150px;
-}
-
-.movie-card-col {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }

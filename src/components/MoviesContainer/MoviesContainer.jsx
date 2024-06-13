@@ -1,4 +1,4 @@
-import { Button, Spin } from "antd";
+import { Button, Col, Row, Spin } from "antd";
 import { useContext, useEffect } from "react";
 import { GlobalContext } from "../../Context/GlobalState";
 import MovieCard from "../MovieCard/MovieCard";
@@ -26,30 +26,34 @@ function MoviesContainer() {
 
   return (
     <div className="movies-container">
-      <div className="filters-button">
+      <Row className="filters-button">
         {genreArray.map((genre) => (
-          <Button
-            className={`genres-button ${
-              selectedGenres.includes(genre.id) ? "selected" : ""
-            }`}
-            key={genre.id}
-            onClick={() => handleGenreClick(genre.id)}
-          >
-            {genre.name}
-          </Button>
+          <Col key={genre.id}>
+            <Button
+              className={`genres-button ${
+                selectedGenres.includes(genre.id) ? "selected" : ""
+              }`}
+              onClick={() => handleGenreClick(genre.id)}
+            >
+              {genre.name}
+            </Button>
+          </Col>
         ))}
-      </div>
+      </Row>
+
       {loading ? (
         <div className="loading-spinner">
           <Spin size="large" />
         </div>
       ) : (
         <>
-          <div className="movies-list">
+          <Row className="movies-container-list">
             {movies.map((movie) => (
-              <MovieCard key={movie.id} id={movie.id} {...movie} />
+              <Col xs={24} sm={16} md={12} lg={8} xl={4} key={movie.id}>
+                <MovieCard id={movie.id} {...movie} />
+              </Col>
             ))}
-          </div>
+          </Row>
           <div className="movies-container-pagination">
             <MoviesPagination />
           </div>

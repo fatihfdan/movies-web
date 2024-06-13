@@ -49,7 +49,6 @@ function Header() {
         selectedKeys={null}
         onClick={handleMenuClick}
       />
-
       <div className="search-container">
         <Input
           className="movies-search"

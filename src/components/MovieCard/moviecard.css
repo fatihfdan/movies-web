@@ -1,19 +1,16 @@
-@media screen and (max-width: 768px) {
-  .movie-card {
-    width: calc(50% - 10px);
-    height: auto;
-    margin: 5px;
-    border: 1px solid transparent;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  }
+.movie-card {
+  height: auto;
+  margin: 5px;
+  border: 1px solid transparent;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .movie-card {
-  width: 240px;
   height: 650px;
   margin: 5px;
   border: 1px solid transparent;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin-left: 15px;
 }
 
 .movie-card img {

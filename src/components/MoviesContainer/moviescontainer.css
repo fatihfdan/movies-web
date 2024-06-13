@@ -20,15 +20,6 @@
   color: white;
 }
 
-.movies-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  margin-bottom: 15px;
-}
-
 .movies-container-pagination {
   margin-bottom: 15px;
 }

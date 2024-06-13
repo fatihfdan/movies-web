@@ -47,7 +47,7 @@ function MoviesContainer() {
         </div>
       ) : (
         <>
-          <Row className="movies-container-list">
+          <Row gutter={12} className="movies-container-list">
             {movies.map((movie) => (
               <Col xs={24} sm={16} md={12} lg={8} xl={4} key={movie.id}>
                 <MovieCard id={movie.id} {...movie} />

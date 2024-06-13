@@ -1,6 +1,7 @@
 .maincard {
   margin-bottom: 25px;
   position: relative;
+  justify-content: center;
 }
 
 .maincard-img {

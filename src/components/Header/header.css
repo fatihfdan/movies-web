@@ -69,6 +69,20 @@
   margin-left: 16px;
 }
 
+.mobile-menu {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  box-shadow: 0 2px 8px #f0f1f2;
+  z-index: 1000;
+}
+
+.mobile-menu .ant-menu-item {
+  padding: 12px 24px;
+}
+
 @media (max-width: 768px) {
   .menu-icon {
     display: block;

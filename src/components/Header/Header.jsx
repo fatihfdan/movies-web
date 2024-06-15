@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import "./header.css";
 import "../../App.css";
-import { Menu, Input, Row, Col } from "antd";
+import { Menu, Input } from "antd";
 import { SearchOutlined, MenuOutlined } from "@ant-design/icons";
 import { useContext, useState, useEffect } from "react";
 import { GlobalContext } from "../../Context/GlobalState";
@@ -24,17 +24,19 @@ function Header() {
   const { setTerm } = useContext(GlobalContext);
   const [searchValue, setSearchValue] = useState("");
   const [moviesParams, setMoviesParams] = useSearchParams();
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileView, setIsMobileView] = useState(false);
+
+  const checkMobileView = () => {
+    const viewportWidth = window.innerWidth;
+    setIsMobileView(viewportWidth <= 768);
+  };
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
+    checkMobileView();
+    window.addEventListener("resize", checkMobileView);
     return () => {
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("resize", checkMobileView);
     };
   }, []);
 
@@ -44,28 +46,25 @@ function Header() {
     } else {
       setMoviesParams({});
     }
+
+    setIsMobileMenuOpen(false);
   };
 
   const handleSearch = () => {
     setTerm(searchValue);
   };
 
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   return (
     <div className="header-container">
-      <div className="menu-icon">
-        {isMobile ? (
-          <MenuOutlined />
-        ) : (
-          <Menu
-            className="movies-menu"
-            mode="horizontal"
-            items={items}
-            onClick={handleMenuClick}
-          />
-        )}
+      <div className="menu-icon" onClick={toggleMobileMenu}>
+        <MenuOutlined />
       </div>
 
-      {!isMobile && (
+      {!isMobileView && (
         <Menu
           className="movies-menu"
           mode="horizontal"
@@ -89,6 +88,12 @@ function Header() {
         <DarkMode />
         <UserButton />
       </div>
+
+      {isMobileView && isMobileMenuOpen && (
+        <div className="mobile-menu">
+          <Menu mode="vertical" items={items} onClick={handleMenuClick} />
+        </div>
+      )}
     </div>
   );
 }

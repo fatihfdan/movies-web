@@ -1,4 +1,4 @@
-import { Flex } from "antd";
+import { Col, Flex, Row } from "antd";
 import { GlobalContext } from "../../Context/GlobalState";
 import MovieCard from "../MovieCard/MovieCard";
 import { useContext } from "react";
@@ -11,11 +11,13 @@ function Movies() {
       {movies.length === 0 ? (
         <p className="notfound">Not Found...</p>
       ) : (
-        <Flex className="movies-list">
+        <Row className="movies-list">
           {movies.map((movie) => (
-            <MovieCard key={movie.id} id={movie.id} {...movie} />
+            <Col xs={24} sm={12} md={8} lg={8} xl={4} key={movie.id}>
+              <MovieCard id={movie.id} {...movie} />
+            </Col>
           ))}
-        </Flex>
+        </Row>
       )}
     </Flex>
   );

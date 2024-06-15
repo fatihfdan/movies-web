@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-// Header.jsx
 import "./header.css";
 import "../../App.css";
 import { Menu, Input, Row, Col } from "antd";

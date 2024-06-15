@@ -71,7 +71,7 @@
 
 @media (max-width: 768px) {
   .menu-icon {
-    display: block; /* Show only on mobile */
+    display: block;
   }
 
   .movies-menu {

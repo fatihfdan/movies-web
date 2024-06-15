@@ -75,7 +75,7 @@
   }
 
   .movies-menu {
-    display: none; /* Hide on mobile */
+    display: none;
   }
 
   .header-container {

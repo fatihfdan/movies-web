@@ -41,7 +41,6 @@ function Header() {
   return (
     <div className="header-container">
       <Row justify="space-between" align="middle" style={{ width: "100%" }}>
-        {/* Left Section: Home and Movies */}
         <Col xs={9} sm={12} md={6} lg={6} xl={6}>
           <Menu
             className="movies-menu"

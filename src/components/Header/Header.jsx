@@ -2,8 +2,8 @@
 import "./header.css";
 import "../../App.css";
 import { Menu, Input, Row, Col } from "antd";
-import { SearchOutlined } from "@ant-design/icons";
-import { useContext, useState } from "react";
+import { SearchOutlined, MenuOutlined } from "@ant-design/icons";
+import { useContext, useState, useEffect } from "react";
 import { GlobalContext } from "../../Context/GlobalState";
 import DarkMode from "../DarkMode/DarkMode";
 import UserButton from "../UserButton/UserButton";
@@ -24,6 +24,19 @@ function Header() {
   const { setTerm } = useContext(GlobalContext);
   const [searchValue, setSearchValue] = useState("");
   const [moviesParams, setMoviesParams] = useSearchParams();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const handleMenuClick = (e) => {
     if (e.key === "movies") {
@@ -39,48 +52,43 @@ function Header() {
 
   return (
     <div className="header-container">
-      <Row justify="space-between" align="middle" style={{ width: "100%" }}>
-        <Col xs={9} sm={12} md={6} lg={6} xl={6}>
+      <div className="menu-icon">
+        {isMobile ? (
+          <MenuOutlined />
+        ) : (
           <Menu
             className="movies-menu"
-            defaultSelectedKeys={["home"]}
             mode="horizontal"
             items={items}
-            selectedKeys={null}
             onClick={handleMenuClick}
           />
-        </Col>
+        )}
+      </div>
 
-        <Col xs={12} sm={24} md={12} lg={12} xl={12}>
-          <div className="search-container">
-            <Input
-              className="movies-search"
-              value={searchValue}
-              onChange={(e) => setSearchValue(e.target.value)}
-              placeholder="Search Movies..."
-              onPressEnter={handleSearch}
-              suffix={
-                <SearchOutlined
-                  onClick={handleSearch}
-                  style={{ fontSize: "20px" }}
-                />
-              }
-              style={{ width: "100%", maxWidth: 400 }}
-            />
-          </div>
-        </Col>
+      {!isMobile && (
+        <Menu
+          className="movies-menu"
+          mode="horizontal"
+          items={items}
+          onClick={handleMenuClick}
+        />
+      )}
 
-        <Col xs={24} sm={12} md={6} lg={6} xl={6}>
-          <Row justify="end" align="middle">
-            <Col>
-              <DarkMode />
-            </Col>
-            <Col style={{ marginLeft: 16 }}>
-              <UserButton />
-            </Col>
-          </Row>
-        </Col>
-      </Row>
+      <Input
+        className="movies-search"
+        value={searchValue}
+        onChange={(e) => setSearchValue(e.target.value)}
+        placeholder="Search Movies..."
+        onPressEnter={handleSearch}
+        suffix={
+          <SearchOutlined onClick={handleSearch} style={{ fontSize: "20px" }} />
+        }
+      />
+
+      <div className="header-actions">
+        <DarkMode />
+        <UserButton />
+      </div>
     </div>
   );
 }

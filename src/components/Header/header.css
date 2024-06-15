@@ -1,16 +1,20 @@
+/* header.css */
+
 .header-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+  padding: 0 16px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px #f0f1f2;
 }
 
 .movies-menu {
   font-weight: 600;
   font-size: 16px;
-  margin-top: 24px;
-  margin-bottom: 40px;
-  gap: 10px;
   background: none;
+  display: flex;
+  gap: 10px;
 }
 
 .movies-menu .ant-menu-item {
@@ -20,12 +24,24 @@
 .movies-menu .ant-menu-item:hover {
   color: white !important;
 }
+
 .ant-menu-horizontal > .ant-menu-item::after {
   border-bottom: red !important;
   transition: none !important;
 }
+
 .ant-menu-horizontal {
   border-bottom: none !important;
+}
+
+.menu-icon {
+  display: none; /* Default to hidden */
+}
+
+.menu-icon > .anticon {
+  font-size: 24px;
+  color: inherit;
+  cursor: pointer;
 }
 
 .search-container {
@@ -33,18 +49,49 @@
   justify-content: center;
   align-items: center;
 }
+
 .movies-search {
-  width: 416px;
+  width: 100%;
+  max-width: 416px;
   height: 48px;
   border-radius: 25px;
-  margin-right: 50px;
-  margin-left: 50px;
+  margin-right: 16px;
+  margin-left: 16px;
   font-size: 16px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+}
+
+.header-actions > * {
+  margin-left: 16px;
+}
+
+@media (max-width: 768px) {
+  .menu-icon {
+    display: block; /* Show only on mobile */
+  }
+
+  .movies-menu {
+    display: none; /* Hide on mobile */
+  }
+
+  .header-container {
+    justify-content: space-between;
+  }
+
+  .movies-search {
+    margin-right: 16px;
+    margin-left: 16px;
+  }
 }
 
 body.light-theme .movies-menu .ant-menu-item {
   color: black;
 }
+
 body.light-theme .movies-menu .ant-menu-item:hover {
   color: black !important;
 }

@@ -35,7 +35,7 @@
 }
 
 .menu-icon {
-  display: none; /* Default to hidden */
+  display: none;
 }
 
 .menu-icon > .anticon {

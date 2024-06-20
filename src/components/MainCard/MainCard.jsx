@@ -5,7 +5,7 @@ import {
   HistoryOutlined,
   StarFilled,
 } from "@ant-design/icons";
-import { GlobalContext } from "../../Context/GlobalState"; // GlobalContext yolunu kendi dosya yapınıza göre ayarlayın
+import { GlobalContext } from "../../Context/GlobalState";
 import "./maincard.css";
 
 function MainCard() {

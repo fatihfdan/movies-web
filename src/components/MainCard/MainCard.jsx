@@ -15,7 +15,7 @@ function MainCard() {
 
   useEffect(() => {
     if (movies.length > 0) {
-      setMovie(movies[1]); // Ana film olarak listeden ilk filmi alıyoruz
+      setMovie(movies[1]);
     } else {
       fetchData(currentPage);
     }

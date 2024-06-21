@@ -17,7 +17,7 @@ function MainCard() {
 
   useEffect(() => {
     if (movies.length > 0) {
-      setMovie(movies[1]); // Change to movies[0] if you want the first movie
+      setMovie(movies[1]);
     } else {
       fetchData(currentPage);
     }

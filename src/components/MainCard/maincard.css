@@ -14,8 +14,9 @@
 .details-container {
   position: absolute;
   top: 452px;
-  left: 500px;
-  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .movie-title {

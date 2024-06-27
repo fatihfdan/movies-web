@@ -28,7 +28,7 @@ function MainCard() {
   }
 
   if (!movie) {
-    return <div>No movie found</div>;
+    return <div>No Movie Found</div>;
   }
 
   const handleClick = () => {

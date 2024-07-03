@@ -9,7 +9,7 @@ function Movies() {
   return (
     <Flex className="movies">
       {movies.length === 0 ? (
-        <p className="notfound">Not Found.</p>
+        <p className="notfound">Not Found</p>
       ) : (
         <Row className="movies-list">
           {movies.map((movie) => (
